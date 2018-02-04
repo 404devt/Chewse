@@ -72,11 +72,7 @@ public class User implements Runnable
         {
             if (room != null)
             {
-                for (User user : room.getUsers())
-                {
-                    user.writer.println(read);
-                    user.writer.flush();
-                }
+                room.getSuggestions().add(read);
             }
         }
     }
