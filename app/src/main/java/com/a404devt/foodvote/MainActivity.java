@@ -3,6 +3,7 @@ package com.a404devt.foodvote;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,9 +13,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, Runnable, View.OnClickListener {
+
+    private Socket socket;
+    private PrintWriter writer;
+    private boolean needFlush;
+    private boolean madeWriter = false;
+    private BufferedReader reader;
+    private String maintext = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +41,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,7 +58,72 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        new Thread(this).start();
+
+
     }
+
+    public void run() {
+
+        if (!madeWriter) {
+            madeWriter = true;
+            Button button = findViewById(R.id.button2);
+            button.setOnClickListener(this);
+//            Log.d("ASS MAMA", "ASS MAMA");
+            try {
+                socket = new Socket("159.65.72.181", 20000);
+                writer = new PrintWriter(socket.getOutputStream());
+                reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+                writer.println("room ASS");
+                writer.flush();
+
+                new Thread(this).start();
+            } catch (Exception ex)
+            {
+
+            }
+
+            while (true) {
+                if (needFlush) {
+                    writer.flush();
+                    needFlush = false;
+
+                }
+            }
+        }
+        else
+        {
+
+            while(true)
+            {
+                String s = null;
+                try {
+//                    Log.d("BIGGER ", "dd");
+                    s = reader.readLine();
+                    if (s != null)
+                    {
+                        Log.d("IN", s);
+                        maintext += String.format("%s\n",s);
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                EditText editText = (EditText) findViewById(R.id.editText6);
+                                editText.setText(maintext);
+                            }
+                        });
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+
 
     @Override
     public void onBackPressed() {
@@ -97,5 +180,23 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        EditText field = (EditText) findViewById(R.id.editText4);
+        Log.d("TEXT",field.getText().toString());
+
+        try {
+            writer.println(field.getText().toString());
+            needFlush = true;
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
