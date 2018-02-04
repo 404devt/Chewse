@@ -65,7 +65,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void run() {
+        if(socket == null) {
+            runOnUiThread(new Runnable() {
 
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "Failed to connect... Retry?", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
         if (!madeWriter) {
             madeWriter = true;
             Button button = findViewById(R.id.button2);
@@ -82,7 +89,7 @@ public class MainActivity extends AppCompatActivity
                 new Thread(this).start();
             } catch (Exception ex)
             {
-//                Toast.makeText(this,"Connection failed. Restart?", Toast.LENGTH_SHORT).show();
+
             }
 
             while (true) {
