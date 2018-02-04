@@ -45,7 +45,7 @@ public class Main
             for (String key : s.getRooms().keySet())
             {
                 Room room = s.getRooms().get(key);
-                if(!room.isHasPrintedNominations() && System.currentTimeMillis() - room.getStartTime() > 10000)
+                if(!room.isHasPrintedNominations() && System.currentTimeMillis() - room.getStartTime() > 20000)
                 {
                     room.printNominations();
                 }

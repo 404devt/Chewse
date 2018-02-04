@@ -72,6 +72,9 @@ public class Room
             u.getWriter().print(nominationString);
             u.getWriter().flush();
         }
+        this.allowNominations = false;
+        this.allowVotes = true;
+        this.hasPrintedNominations = true;
         startTime = System.currentTimeMillis();
     }
 

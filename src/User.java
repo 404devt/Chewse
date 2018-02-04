@@ -6,28 +6,29 @@ import java.net.Socket;
 
 public class User implements Runnable
 {
-	private Server server;
-	private Socket socket;
-	private PrintWriter writer;
-	private BufferedReader reader;
-	private boolean isConnected = true;
+    private Server server;
+    private Socket socket;
+    private PrintWriter writer;
+    private BufferedReader reader;
+    private boolean isConnected = true;
     private Room room;
+    private boolean[] approvals = null;
 
     public User(Server server, Socket s) throws IOException
     {
-		this.socket = s;
-		this.server = server;
-		this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		this.writer = new PrintWriter(socket.getOutputStream());
+        this.socket = s;
+        this.server = server;
+        this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        this.writer = new PrintWriter(socket.getOutputStream());
 //        System.out.println("NEW CLENT");
         new Thread(this).start();
-	}
+    }
 
-	public void run()
-	{
-		String s = null;
-		while (isConnected)
-		{
+    public void run()
+    {
+        String s = null;
+        while (isConnected)
+        {
             try {
                 s = reader.readLine();
             } catch (IOException e) {
@@ -39,15 +40,15 @@ public class User implements Runnable
 //                System.out.println(s);
                 incomingMessage(s);
             }
-		}
-	}
+        }
+    }
 
-	public Socket getSocket()
-	{
-		return socket;
-	}
-	
-	public void incomingMessage(String read)
+    public Socket getSocket()
+    {
+        return socket;
+    }
+    
+    public void incomingMessage(String read)
     {
         String[] arr = read.split(" ");
         if (arr[0].equals("room"))
@@ -70,20 +71,47 @@ public class User implements Runnable
         }
         else
         {
-            if (room != null && room.isAllowNominations() && room.isAllowNominations())
+            if (room != null && room.isAllowNominations() && !room.isAllowVotes())
             {
                 room.getSuggestions().add(read);
+            }
+            if (room != null && !room.isAllowNominations() && room.isAllowVotes())
+            {
+                int num = -1;
+                try
+                {
+                    num = Integer.parseInt(read);
+                }
+                catch(Exception ex)
+                {
+
+                }
+                if (num <= 0 || num > room.getSuggestions().size())
+                {
+                    writer.println(String.format("Enter a number 1-%d",room.getSuggestions().size()));
+                    writer.flush();
+                }
+                else
+                {
+                    if(approvals == null)
+                        approvals = new boolean[room.getSuggestions().size()];
+                    approvals[num-1] =  !approvals[num-1];
+                    String filler = "disapprove";
+                    if (approvals[num-1])
+                        filler = "approve";
+                    writer.println(String.format("You %s of %s!", filler, room.getSuggestions().get(num-1)));
+                }
             }
         }
     }
 
-	public void disconnect() throws IOException
-	{
-		writer.close();
-		reader.close();
-		socket.close();
-		isConnected = false;		
-	}
+    public void disconnect() throws IOException
+    {
+        writer.close();
+        reader.close();
+        socket.close();
+        isConnected = false;        
+    }
 
     public boolean isConnected() {
         return isConnected;
