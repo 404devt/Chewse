@@ -156,6 +156,8 @@ public class Room
 
         this.hasPrintedFinal = true;
         this.hasPrintedNominations = true;
+        this.allowVotes = false;
+        this.allowNominations = false;
 
         String resultString;
 
