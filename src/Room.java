@@ -97,11 +97,14 @@ public class Room
         }
         return ret;
     }
-    public String noSuggestions()
+    public void noSuggestions()
     {
         setHasPrintedFinal(true);
         setHasPrintedNominations(true);
-        return "No Suggestions Entered";
+        for(User u: users) {
+            u.getWriter().print("No Suggestions Entered");
+            u.getWriter().flush();
+        }
     }
 
 
