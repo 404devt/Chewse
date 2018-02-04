@@ -52,7 +52,7 @@ public class User implements Runnable
         String[] arr = read.split(" ");
         if (arr[0].equals("room"))
         {
-            if(this.room != null) {
+            if(this.room == null) {
                 String key = arr[1];
                 Room room = server.getRooms().get(key);
                 if (room == null) {
