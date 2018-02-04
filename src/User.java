@@ -27,7 +27,7 @@ public class User implements Runnable
     public void run()
     {
         String s = null;
-        this.writer.println("Welcome to FoodVote\n Please Create a Room");
+        this.writer.println("Welcome to FoodVote\nPlease Create a Room");
         this.writer.flush();
         while (isConnected)
         {
