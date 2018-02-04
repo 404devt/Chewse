@@ -1,13 +1,19 @@
-public abstract class ClientData
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public abstract class ClientData implements Runnable
 {
 	private Socket socket;
 	private PrintWriter writer;
-	private BufferedReader writer;
+	private BufferedReader reader;
 	private boolean isConnected = true;
-	public ClientData(Socket s) implements Runnable
-	{
+	public ClientData(Socket s) throws IOException
+    {
 		this.socket = s;
-		this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream())));
+		this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		this.writer = new PrintWriter(socket.getOutputStream());
 		new Thread(this).start();
 	}
@@ -17,8 +23,12 @@ public abstract class ClientData
 		String s = null;
 		while (isConnected)
 		{
-			s = reader.readLine();
-			if (s != null)
+            try {
+                s = reader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (s != null)
 				incomingMessage(s);
 		}
 	}
@@ -33,7 +43,6 @@ public abstract class ClientData
 	public void disconnect() throws IOException
 	{
 		writer.close();
-		reader.stop();
 		reader.close();
 		socket.close();
 		isConnected = false;		

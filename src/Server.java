@@ -1,4 +1,6 @@
+import java.io.IOException;
 import java.net.*;
+import java.util.ArrayList;
 
 
 public class Server extends ServerSocket implements Runnable
@@ -6,7 +8,7 @@ public class Server extends ServerSocket implements Runnable
 	private boolean up;
 	private ArrayList<ClientData> users;
 
-	public Server(int port)
+	public Server(int port) throws IOException
 	{
 		super(port);
 		up = true;
@@ -18,10 +20,14 @@ public class Server extends ServerSocket implements Runnable
 	{
 		while (up)
 		{
-			Socket socket;
-			socket = accept();
-			ClientData nuser = new ClientData(socket);
-			users.add(nuser);
+			Socket socket = null;
+			try {
+				socket = accept();
+//				ClientData nuser = new ClientData(socket);
+//				users.add(nuser);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
