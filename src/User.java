@@ -27,6 +27,7 @@ public class User implements Runnable
     public void run()
     {
         String s = null;
+        this.writer.println("Welcome to FoodVote\n Please Create a Room");
         while (isConnected)
         {
             try {
@@ -53,6 +54,7 @@ public class User implements Runnable
         String[] arr = read.split(" ");
         if (arr[0].equals("room"))
         {
+            
             if(this.room == null) {
                 String key = arr[1];
                 Room room = server.getRooms().get(key);
@@ -71,6 +73,10 @@ public class User implements Runnable
         }
         else
         {
+            if (!arr[0].equals("room"))
+            {
+                this.writer.println("Motherfucker Type Room You Bitch");
+            }
             if (room != null && room.isAllowNominations() && !room.isAllowVotes())
             {
                 room.getSuggestions().add(read);
