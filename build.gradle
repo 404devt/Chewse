@@ -16,16 +16,7 @@ buildscript {
     }
 }
 
-android
-{
-    defaultConfig 
-    {
-    minSdkVersion 15
-    targetSdkVersion 19
-    versionCode 2
-    versionName "1.01k"
-    }
-}
+
 
 allprojects {
     repositories {
