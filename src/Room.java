@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Room
 {
+
     private ArrayList<User> users = new ArrayList<User>();
     private ArrayList<String> suggestions = new ArrayList<String>();
     private boolean allowNominations = true;
@@ -73,6 +74,12 @@ public class Room
         }
         startTime = System.currentTimeMillis();
     }
+
+    public String generateNominationString()
+    {
+        return null;
+    }
+
 
 
 }
