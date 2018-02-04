@@ -51,7 +51,7 @@ public class Main
                     if (room.checkSuggestion())
                         room.printNominations();
                     else {
-                        break;
+                        System.out.println("No Suggestions Entered");
                     }
                 }
 
