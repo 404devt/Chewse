@@ -100,7 +100,7 @@ public class Room
     public void noSuggestions()
     {
         for(User u: users) {
-            u.getWriter().print("No Suggestions Entered");
+            u.getWriter().println("No Suggestions Entered");
             u.getWriter().flush();
         }
     }
@@ -118,7 +118,6 @@ public class Room
     {
 
         int[] resutls = new int[suggestions.size()];
-        int winIndx = -1;
         int winScore = -1;
         for (User u : users)
         {
@@ -129,18 +128,48 @@ public class Room
                 }
             }
         }
+
+
+        ///
+
+
+        ArrayList<Integer> tiedIndecies = new ArrayList<>();
+
         for (int i = 0; i < resutls.length; i++)
         {
             if (resutls[i] > winScore)
             {
                 winScore = resutls[i];
-                winIndx = i;
+                tiedIndecies.clear();
+                tiedIndecies.add(i);
+
+
             }
+            else if(resutls[i] == winScore)
+            {
+                tiedIndecies.add(i);
+            }
+
+
+
         }
 
         this.hasPrintedFinal = true;
         this.hasPrintedNominations = true;
-        String resultString = String.format("Winner is %s with %d approvals!\n", suggestions.get(winIndx), resutls[winIndx]);
+
+        String resultString;
+
+        if(tiedIndecies.size()==1)
+        resultString = String.format("Winner is %s with %d approvals!\n", suggestions.get(tiedIndecies.get(0)), tiedIndecies.get(0));
+        else
+        {
+            resultString = String.format("%d options tied for with %d points!\n",tiedIndecies.size(),winScore);
+            for (int indx : tiedIndecies)
+            {
+                resultString += String.format("\t - %s\n", tiedIndecies.get(indx));
+            }
+        }
+
         for (User u : users)
         {
             u.getWriter().print(resultString);
