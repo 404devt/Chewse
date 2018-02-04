@@ -52,6 +52,7 @@ public class User implements Runnable
     
     public void incomingMessage(String read)
     {
+        System.out.println(read);
         String[] arr = read.split(" ");
         if (!arr[0].equals("room")&& this.room == null)
         {
