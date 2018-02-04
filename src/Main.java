@@ -52,6 +52,9 @@ public class Main
                         room.printNominations();
                     else {
                         System.out.println("No Suggestions Entered");
+                        room.setHasPrintedFinal(true);
+                        room.setHasPrintedNominations(true);
+
                     }
                 }
 
