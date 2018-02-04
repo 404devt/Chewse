@@ -49,6 +49,11 @@ public class Main
                 {
                     room.printNominations();
                 }
+
+                if(room.isHasPrintedNominations() && !room.isHasPrintedFinal() && System.currentTimeMillis() - room.getStartTime() > 20000)
+                {
+                    room.printVoteResult();
+                }
             }   
         }
 

@@ -90,5 +90,37 @@ public class Room
     }
 
 
+    public void printVoteResult()
+    {
 
+        int[] resutls = new int[suggestions.size()];
+        int winIndx = -1;
+        int winScore = -1;
+        for (User u : users)
+        {
+            if (u.getApprovals() != null) {
+                for (int i = 0; i < u.getApprovals().length; i++) {
+                    if (u.getApprovals()[i])
+                        resutls[i]++;
+                }
+            }
+        }
+        for (int i = 0; i < resutls.length; i++)
+        {
+            if (resutls[i] > winScore)
+            {
+                winScore = resutls[i];
+                winIndx = i;
+            }
+        }
+
+        this.hasPrintedFinal = true;
+        this.hasPrintedNominations = true;
+        String resultString = String.format("Winner is %s with %d approvals!\n", suggestions.get(winIndx), resutls[winIndx]);
+        for (User u : users)
+        {
+            u.getWriter().print(resultString);
+            u.getWriter().flush();
+        }
+    }
 }

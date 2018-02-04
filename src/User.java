@@ -125,4 +125,8 @@ public class User implements Runnable
     public PrintWriter getWriter() {
         return writer;
     }
+
+    public boolean[] getApprovals() {
+        return approvals;
+    }
 }
