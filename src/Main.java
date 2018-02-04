@@ -47,7 +47,12 @@ public class Main
                 Room room = s.getRooms().get(key);
                 if(!room.isHasPrintedNominations() && System.currentTimeMillis() - room.getStartTime() > 20000)
                 {
-                    room.printNominations();
+
+                    if (room.checkSuggestion())
+                        room.printNominations();
+                    else {
+                        break;
+                    }
                 }
 
                 if(room.isHasPrintedNominations() && !room.isHasPrintedFinal() && System.currentTimeMillis() - room.getStartTime() > 20000)

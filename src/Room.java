@@ -64,6 +64,15 @@ public class Room
         this.startTime = startTime;
     }
 
+    public boolean checkSuggestion()
+    {
+        if (suggestions.size() == 0)
+        {
+            return false;
+        }
+        else
+            return true;
+    }
     public void printNominations()
     {
         String nominationString = generateNominationString();
