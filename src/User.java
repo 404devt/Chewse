@@ -19,7 +19,8 @@ public class User implements Runnable
 		this.server = server;
 		this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		this.writer = new PrintWriter(socket.getOutputStream());
-		new Thread(this).start();
+        System.out.println("NEW CLENT");
+        new Thread(this).start();
 	}
 
 	public void run()
