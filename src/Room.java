@@ -66,7 +66,7 @@ public class Room
 
     public void printNominations()
     {
-        String nominationString = "";
+        String nominationString = generateNominationString();
         for (User u : users)
         {
             u.getWriter().print(nominationString);
@@ -77,7 +77,13 @@ public class Room
 
     public String generateNominationString()
     {
-        return null;
+        String ret = "";
+        ret += "Here are the nominations to choose from: \n";
+        for (int i = 0; i < suggestions.size(); i++)
+        {
+        	ret += String.format("\t%d - %s\n", (i+1), suggestions.get(i));
+        }
+        return ret;
     }
 
 
