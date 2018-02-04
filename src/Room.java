@@ -158,6 +158,7 @@ public class Room
         this.hasPrintedNominations = true;
         this.allowVotes = false;
         this.allowNominations = false;
+        this.startTime = System.currentTimeMillis();
 
         String resultString;
 
@@ -176,6 +177,18 @@ public class Room
         {
             u.getWriter().print(resultString);
             u.getWriter().flush();
+        }
+    }
+
+    public boolean isFinished()
+    {
+        return hasPrintedFinal && (System.currentTimeMillis() - startTime > 5000);
+    }
+    public void closeRoom()
+    {
+        for (User u : users)
+        {
+            u.disconnect();
         }
     }
 }
