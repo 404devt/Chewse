@@ -15,6 +15,7 @@ public class Server extends ServerSocket implements Runnable
 		super(port);
 		up = true;
 		users = new ArrayList<User>();
+		rooms = new HashMap<>();
 		new Thread(this).start();
 	}
 
