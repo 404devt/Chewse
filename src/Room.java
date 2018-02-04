@@ -163,7 +163,7 @@ public class Room
         resultString = String.format("Winner is %s with %d approvals!\n", suggestions.get(tiedIndecies.get(0)), tiedIndecies.get(0));
         else
         {
-            resultString = String.format("%d options tied for with %d points!\n",tiedIndecies.size(),winScore);
+            resultString = String.format("%d options are tied with %d points!\n",tiedIndecies.size(),winScore);
             for (int indx : tiedIndecies)
             {
                 resultString += String.format("\t - %s\n", suggestions.get(indx));
