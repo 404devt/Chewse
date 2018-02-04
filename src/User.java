@@ -55,6 +55,7 @@ public class User implements Runnable
         if (!arr[0].equals("room"))
         {
             this.writer.println("Motherfucker Type Room You Bitch");
+            this.writer.flush();
         }
         if (arr[0].equals("room"))
         {
