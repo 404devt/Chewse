@@ -1,7 +1,4 @@
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 public class Main
 {
@@ -40,6 +37,33 @@ public class Main
 //        }
 
         Server s = new Server(20000);
+        while (true)
+        {
+            for (String key : s.getRooms().keySet())
+            {
+                Room room = s.getRooms().get(key);
+                if(!room.isHasPrintedNominations() && System.currentTimeMillis() - room.getStartTime() > 15000)
+                {
+
+                    if (room.checkSuggestion())
+                        room.printNominations();
+                    else {
+                        room.noSuggestions();
+                        room.resetSuggestionPhase();
+                    }
+                }
+
+                if(room.isHasPrintedNominations() && !room.isHasPrintedFinal() && System.currentTimeMillis() - room.getStartTime() > 15000)
+                {
+                    room.printVoteResult();
+                }
+                if (room.isFinished())
+                {
+                    room.closeRoom();
+                    s.getRooms().remove(room.getKey());
+                }
+            }   
+        }
 
 
 
