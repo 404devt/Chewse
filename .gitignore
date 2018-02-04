@@ -2,3 +2,4 @@
 foodvote.iml
 *.class
 */.idea/
+/out/

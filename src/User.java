@@ -34,7 +34,8 @@ public class User implements Runnable
             try {
                 s = reader.readLine();
             } catch (IOException e) {
-                e.printStackTrace();
+              this.isConnected = false;
+                this.disconnect();
             }
 
             if (s != null)
@@ -116,12 +117,18 @@ public class User implements Runnable
         }
     }
 
-    public void disconnect() throws IOException
+    public void disconnect()
     {
-        writer.close();
-        reader.close();
-        socket.close();
-        isConnected = false;        
+        try {
+            writer.close();
+            reader.close();
+            socket.close();
+            isConnected = false;
+        }
+        catch(Exception ex)
+        {
+
+        }
     }
 
     public boolean isConnected() {
