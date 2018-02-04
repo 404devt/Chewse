@@ -65,14 +65,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void run() {
-        if(socket == null) {
-            runOnUiThread(new Runnable() {
 
-                public void run() {
-                    Toast.makeText(getApplicationContext(), "Failed to connect... Retry?", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
         if (!madeWriter) {
             madeWriter = true;
             Button button = findViewById(R.id.button2);
@@ -90,6 +83,15 @@ public class MainActivity extends AppCompatActivity
             } catch (Exception ex)
             {
 
+            }
+
+            if(socket == null) {
+                runOnUiThread(new Runnable() {
+
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "Failed to connect... Retry?", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
 
             while (true) {
@@ -128,7 +130,7 @@ public class MainActivity extends AppCompatActivity
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(getApplicationContext(),"LOST CONNECTION",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"LOST CONNECTION",Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -215,7 +217,7 @@ public class MainActivity extends AppCompatActivity
         catch(Exception ex)
         {
             ex.printStackTrace();
-            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR", Toast.LENGTH_LONG).show();
         }
 
         runOnUiThread(new Runnable() {
