@@ -55,7 +55,7 @@ public class User implements Runnable
         String[] arr = read.split(" ");
         if (!arr[0].equals("room")&& this.room == null)
         {
-            this.writer.println("Motherfucker Type Room You Bitch");
+            this.writer.println("Please Type A Room");
             this.writer.flush();
         }
         if (arr[0].equals("room"))
@@ -77,6 +77,11 @@ public class User implements Runnable
 
             if (room != null && room.isAllowNominations() && !room.isAllowVotes())
             {
+                if(read.equals(" ") || read.equals("\n") )
+                {
+                    this.writer.println("Please Enter A Suggestion");
+                    this.writer.flush();
+                }
                 room.getSuggestions().add(read);
             }
             if (room != null && !room.isAllowNominations() && room.isAllowVotes())
