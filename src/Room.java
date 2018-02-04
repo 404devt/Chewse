@@ -166,7 +166,7 @@ public class Room
             resultString = String.format("%d options tied for with %d points!\n",tiedIndecies.size(),winScore);
             for (int indx : tiedIndecies)
             {
-                resultString += String.format("\t - %s\n", tiedIndecies.get(indx));
+                resultString += String.format("\t - %s\n", suggestions.get(indx));
             }
         }
 
