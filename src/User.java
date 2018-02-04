@@ -32,8 +32,12 @@ public class User implements Runnable
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             if (s != null)
-				incomingMessage(s);
+            {
+                System.out.println(s);
+                incomingMessage(s);
+            }
 		}
 	}
 
