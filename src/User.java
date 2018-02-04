@@ -19,7 +19,7 @@ public class User implements Runnable
 		this.server = server;
 		this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		this.writer = new PrintWriter(socket.getOutputStream());
-        System.out.println("NEW CLENT");
+//        System.out.println("NEW CLENT");
         new Thread(this).start();
 	}
 
@@ -36,7 +36,7 @@ public class User implements Runnable
 
             if (s != null)
             {
-                System.out.println(s);
+//                System.out.println(s);
                 incomingMessage(s);
             }
 		}
@@ -52,15 +52,21 @@ public class User implements Runnable
         String[] arr = read.split(" ");
         if (arr[0].equals("room"))
         {
-        	String key = arr[1];
-        	Room room = server.getRooms().get(key);
-        	if (room == null)
-        	{
-        		room = new Room();
-        		server.getRooms().put(key, room);
-        	}
-        	this.room = room;
-        	room.getUsers().add(this);
+            if(this.room != null) {
+                String key = arr[1];
+                Room room = server.getRooms().get(key);
+                if (room == null) {
+                    room = new Room();
+                    server.getRooms().put(key, room);
+                }
+                this.room = room;
+                room.getUsers().add(this);
+            }
+            else
+            {
+                this.writer.println("You already set room.");
+                this.writer.flush();
+            }
         }
         else
         {
