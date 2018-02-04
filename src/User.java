@@ -70,7 +70,7 @@ public class User implements Runnable
         }
         else
         {
-            if (room != null)
+            if (room != null && room.isAllowNominations() && room.isAllowNominations())
             {
                 room.getSuggestions().add(read);
             }
@@ -91,5 +91,9 @@ public class User implements Runnable
 
     public void setConnected(boolean connected) {
         isConnected = connected;
+    }
+
+    public PrintWriter getWriter() {
+        return writer;
     }
 }

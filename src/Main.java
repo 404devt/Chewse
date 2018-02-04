@@ -40,6 +40,17 @@ public class Main
 //        }
 
         Server s = new Server(20000);
+        while (true)
+        {
+            for (String key : s.getRooms().keySet())
+            {
+                Room room = s.getRooms().get(key);
+                if(!room.isHasPrintedNominations() && System.currentTimeMillis() - room.getStartTime() > 10000)
+                {
+                    room.printNominations();
+                }
+            }   
+        }
 
 
 
