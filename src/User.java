@@ -28,6 +28,7 @@ public class User implements Runnable
     {
         String s = null;
         this.writer.println("Welcome to FoodVote\n Please Create a Room");
+        this.writer.flush();
         while (isConnected)
         {
             try {
@@ -52,7 +53,7 @@ public class User implements Runnable
     public void incomingMessage(String read)
     {
         String[] arr = read.split(" ");
-        if (!arr[0].equals("room"))
+        if (!arr[0].equals("room")&& this.room == null)
         {
             this.writer.println("Motherfucker Type Room You Bitch");
             this.writer.flush();
@@ -69,11 +70,6 @@ public class User implements Runnable
                 }
                 this.room = room;
                 room.getUsers().add(this);
-            }
-            else
-            {
-                this.writer.println("You already set room.");
-                this.writer.flush();
             }
         }
         else
