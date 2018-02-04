@@ -95,6 +95,10 @@ public class User implements Runnable
                 {
 
                 }
+                if (room.getSuggestions().size() == 0)
+                    writer.println("No Suggestions Entered");
+                    writer.flush();
+                    isConnected = false;
                 if (num <= 0 || num > room.getSuggestions().size())
                 {
                     writer.println(String.format("Enter a number 1-%d",room.getSuggestions().size()));
