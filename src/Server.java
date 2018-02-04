@@ -6,14 +6,14 @@ import java.util.ArrayList;
 public class Server extends ServerSocket implements Runnable
 {
 	private boolean up;
-	private ArrayList<ClientData> users;
+	private ArrayList<User> users;
     private ArrayList<Room> rooms;
 
 	public Server(int port) throws IOException
 	{
 		super(port);
 		up = true;
-		users = new ArrayList<ClientData>();
+		users = new ArrayList<User>();
 		new Thread(this).start();
 	}
 
@@ -24,7 +24,7 @@ public class Server extends ServerSocket implements Runnable
 			Socket socket = null;
 			try {
 				socket = accept();
-//				ClientData nuser = new ClientData(socket);
+//				User nuser = new User(socket);
 //				users.add(nuser);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -32,7 +32,7 @@ public class Server extends ServerSocket implements Runnable
 		}
 	}
 
-	public ArrayList<ClientData> getUsers() {
+	public ArrayList<User> getUsers() {
 		return users;
 	}
 

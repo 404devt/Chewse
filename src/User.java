@@ -4,13 +4,13 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class ClientData implements Runnable
+public class User implements Runnable
 {
 	private Socket socket;
 	private PrintWriter writer;
 	private BufferedReader reader;
 	private boolean isConnected = true;
-	public ClientData(Socket s) throws IOException
+	public User(Socket s) throws IOException
     {
 		this.socket = s;
 		this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -40,6 +40,7 @@ public class ClientData implements Runnable
 	
 	public void incomingMessage(String read)
     {
+        String[] arr = read.split(" ");
 
     }
 
