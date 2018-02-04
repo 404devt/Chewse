@@ -8,7 +8,7 @@
     tools:context="com.a404devt.foodvote.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
         android:orientation="vertical"
@@ -18,24 +18,33 @@
         <EditText
             android:id="@+id/editText6"
             android:layout_width="match_parent"
-            android:layout_height="381dp"
+            android:layout_height="1dp"
             android:ems="10"
             android:focusable="false"
-            android:inputType="none" />
+            android:inputType="none"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/ent_field"
+            />
 
         <EditText
             android:id="@+id/ent_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:ems="10"
             android:inputType="text"
             android:selectAllOnFocus="true"
+            android:layout_above="@id/button2"
             android:text="Suggestion" />
+
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit" />
-    </LinearLayout>
+            android:text="Submit"
+            android:layout_alignParentBottom="true"
+           />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

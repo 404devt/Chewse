@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
                 new Thread(this).start();
             } catch (Exception ex)
             {
-                Toast.makeText(this,"Connection failed. Restart?", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this,"Connection failed. Restart?", Toast.LENGTH_SHORT).show();
             }
 
             while (true) {
