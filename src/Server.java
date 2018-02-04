@@ -1,13 +1,14 @@
 import java.io.IOException;
 import java.net.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Server extends ServerSocket implements Runnable
 {
 	private boolean up;
 	private ArrayList<User> users;
-    private ArrayList<Room> rooms;
+    private HashMap<String, Room> rooms;
 
 	public Server(int port) throws IOException
 	{
@@ -36,7 +37,7 @@ public class Server extends ServerSocket implements Runnable
 		return users;
 	}
 
-	public ArrayList<Room> getRooms() {
+	public HashMap<String, Room> getRooms() {
 		return rooms;
 	}
 }
