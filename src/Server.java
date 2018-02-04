@@ -7,6 +7,7 @@ public class Server extends ServerSocket implements Runnable
 {
 	private boolean up;
 	private ArrayList<ClientData> users;
+    private ArrayList<Room> rooms;
 
 	public Server(int port) throws IOException
 	{
@@ -30,5 +31,12 @@ public class Server extends ServerSocket implements Runnable
 			}
 		}
 	}
-	
+
+	public ArrayList<ClientData> getUsers() {
+		return users;
+	}
+
+	public ArrayList<Room> getRooms() {
+		return rooms;
+	}
 }

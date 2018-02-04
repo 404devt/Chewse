@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public abstract class ClientData implements Runnable
+public class ClientData implements Runnable
 {
 	private Socket socket;
 	private PrintWriter writer;
@@ -38,7 +38,10 @@ public abstract class ClientData implements Runnable
 		return socket;
 	}
 	
-	public abstract void incomingMessage(String read);
+	public void incomingMessage(String read)
+    {
+
+    }
 
 	public void disconnect() throws IOException
 	{
@@ -46,5 +49,13 @@ public abstract class ClientData implements Runnable
 		reader.close();
 		socket.close();
 		isConnected = false;		
-	}	
+	}
+
+    public boolean isConnected() {
+        return isConnected;
+    }
+
+    public void setConnected(boolean connected) {
+        isConnected = connected;
+    }
 }
