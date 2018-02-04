@@ -18,17 +18,17 @@
         <EditText
             android:id="@+id/editText6"
             android:layout_width="match_parent"
-            android:layout_height="378dp"
-            android:editable="false"
+            android:layout_height="381dp"
             android:ems="10"
-            android:inputType="textMultiLine" />
+            android:focusable="false"
+            android:inputType="none" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/ent_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textCapCharacters"
+            android:inputType="text"
             android:selectAllOnFocus="true"
             android:text="Suggestion" />
 
@@ -36,6 +36,6 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Submit" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

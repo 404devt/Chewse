@@ -76,13 +76,13 @@ public class MainActivity extends AppCompatActivity
                 writer = new PrintWriter(socket.getOutputStream());
                 reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                writer.println("room ASS");
+                writer.println("room default");
                 writer.flush();
 
                 new Thread(this).start();
             } catch (Exception ex)
             {
-
+                Toast.makeText(this,"Connection failed. Restart?", Toast.LENGTH_SHORT).show();
             }
 
             while (true) {
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity
         else
         {
 
-            while(true)
+            while(!socket.isClosed())
             {
                 String s = null;
                 try {
@@ -112,6 +112,16 @@ public class MainActivity extends AppCompatActivity
                             public void run() {
                                 EditText editText = (EditText) findViewById(R.id.editText6);
                                 editText.setText(maintext);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        socket.close();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(),"LOST CONNECTION",Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -185,8 +195,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View view)
     {
-        EditText field = (EditText) findViewById(R.id.editText4);
+        EditText field = (EditText) findViewById(R.id.ent_field);
         Log.d("TEXT",field.getText().toString());
+
+
+
 
         try {
             writer.println(field.getText().toString());
@@ -197,6 +210,14 @@ public class MainActivity extends AppCompatActivity
             ex.printStackTrace();
             Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
         }
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                EditText editText = (EditText) findViewById(R.id.ent_field);
+                editText.setText("");
+            }
+        });
 
     }
 }
