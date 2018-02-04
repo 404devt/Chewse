@@ -25,8 +25,8 @@ public class Server extends ServerSocket implements Runnable
 			Socket socket = null;
 			try {
 				socket = accept();
-//				User nuser = new User(socket);
-//				users.add(nuser);
+				User nuser = new User(this,socket);
+				users.add(nuser);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
