@@ -20,12 +20,12 @@
             android:id="@+id/editText6"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_above="@id/ll"
+            android:layout_alignParentTop="true"
             android:ems="10"
             android:focusable="false"
-            android:inputType="none"
-            android:layout_alignParentTop="true"
-            android:layout_above="@id/ll"
-            />
+            android:inputType="none|textMultiLine|textNoSuggestions"
+            android:singleLine="false" />
 
 
         <LinearLayout
