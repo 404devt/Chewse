@@ -97,6 +97,12 @@ public class Room
         }
         return ret;
     }
+    public String noSuggestions()
+    {
+        setHasPrintedFinal(true);
+        setHasPrintedNominations(true);
+        return "No Suggestions Entered";
+    }
 
 
     public void printVoteResult()
