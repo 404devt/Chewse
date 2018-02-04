@@ -100,6 +100,7 @@ public class User implements Runnable
                     if (approvals[num-1])
                         filler = "approve";
                     writer.println(String.format("You %s of %s!", filler, room.getSuggestions().get(num-1)));
+                    writer.flush();
                 }
             }
         }
