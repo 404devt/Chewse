@@ -10,6 +10,7 @@ public class Room
     private boolean hasPrintedNominations = false;
     private boolean hasPrintedFinal = false;
     private long startTime = 0;
+    private String key;
 
     public Room()
     {
@@ -190,5 +191,13 @@ public class Room
         {
             u.disconnect();
         }
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

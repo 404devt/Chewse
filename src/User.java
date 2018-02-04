@@ -69,6 +69,7 @@ public class User implements Runnable
                 if (room == null) {
                     room = new Room();
                     System.out.printf("ADDING A ROOM %s\n",key);
+                    room.setKey(key);
                     server.getRooms().put(key, room);
                 }
                 this.room = room;

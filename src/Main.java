@@ -1,7 +1,4 @@
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 public class Main
 {
@@ -63,7 +60,7 @@ public class Main
                 if (room.isFinished())
                 {
                     room.closeRoom();
-                    s.getRooms().remove(room);
+                    s.getRooms().remove(room.getKey());
                 }
             }   
         }
