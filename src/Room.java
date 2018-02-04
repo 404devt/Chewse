@@ -99,8 +99,6 @@ public class Room
     }
     public void noSuggestions()
     {
-        setHasPrintedFinal(true);
-        setHasPrintedNominations(true);
         for(User u: users) {
             u.getWriter().print("No Suggestions Entered");
             u.getWriter().flush();
