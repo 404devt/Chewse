@@ -2,11 +2,6 @@
 
 buildscript {
    
-    defaultConfig 
-    {
-    versionCode 2
-    versionName "1.01k"
-    }
     
     repositories {
         google()
@@ -20,6 +15,8 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+
+
 
 allprojects {
     repositories {
