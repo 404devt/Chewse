@@ -52,6 +52,7 @@ public class Main
                         room.printNominations();
                     else
                         room.noSuggestions();
+                        room.resetSuggestionPhase();
                 }
 
                 if(room.isHasPrintedNominations() && !room.isHasPrintedFinal() && System.currentTimeMillis() - room.getStartTime() > 20000)

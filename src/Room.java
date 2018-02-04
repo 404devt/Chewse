@@ -106,6 +106,14 @@ public class Room
             u.getWriter().flush();
         }
     }
+    public void resetSuggestionPhase()
+    {
+        startTime = System.currentTimeMillis();
+        allowNominations = true;
+        allowVotes = false;
+        hasPrintedNominations = false;
+        hasPrintedFinal = false;
+    }
 
 
     public void printVoteResult()
