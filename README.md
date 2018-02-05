@@ -1,5 +1,4 @@
-# Chewse
-<h2>Chewse, a food decider app.</h2>
+#Chewse, a food decider app
 
 <h2>Inspiration</h2>
 
