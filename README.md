@@ -1,12 +1,5 @@
 # Chewse, A Food Decider Application
 
-<img alt="Chewse – screenshot 1" class="software_photo_image image-replacement" src="//challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/599/485/datas/gallery.jpg" />
-    <p>
-      <i>Chewse Logo</i>
-    </p>
-</li>
-</ul>    </div>
-
 <h2>Inspiration</h2>
 
 <p>A group of indecisive friends want to go out for dinner, but they cannot all decide on one place to go to.</p>
