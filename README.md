@@ -35,7 +35,7 @@ We decided to implement with Java.</p>
 
 <h2>Challenges we ran into</h2>
 
-<p>Initially our team came in with a vague idea of what to do for our project, but we scrapped the ideas we came in with and had to invest time into brainstorming.</p>
+<p>Initially, our team came in with a vague idea of what to do for our project, but we scrapped the ideas we came in with and had to invest time into brainstorming.</p>
 
 <p>Once we started testing, we we able to run a straightforward simulation of the voting process. Once we considered different scenarios and possible outcomes, we found multiple obstacles that we had to overcome, such as dealing with tie votes and invalid nominations.</p>
 
