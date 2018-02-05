@@ -39,7 +39,7 @@ We decided to implement with Java.</p>
 
 <p>Once we started testing, we we able to run a straightforward simulation of the voting process. Once we considered different scenarios and possible outcomes, we found multiple obstacles that we had to overcome, such as dealing with tie votes and invalid nominations.</p>
 
-<h2>Accomplishments that I'm proud of</h2>
+<h2>Accomplishments that We're proud of</h2>
 
 <p>The brainstorming phase was an important part of our project process because we were able to brainstorm our ideas and share them. 
 We knew that we could use a server for our project but most of us were unfamiliar with dealing with them. But with good progress and pacing, we were able to make a server back-end and an app from scratch. </p>
