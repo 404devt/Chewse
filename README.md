@@ -1,5 +1,5 @@
 # Chewse, A Food Decider Application
-<img src="https://i.imgur.com/a/Cg4xR.png" width="600">
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/Cg4xR"><a href="//imgur.com/Cg4xR"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 <h2>Inspiration</h2>
 
 <p>A group of indecisive friends want to go out for dinner, but they cannot all decide on one place to go to.</p>
