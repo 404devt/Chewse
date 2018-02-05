@@ -1,4 +1,4 @@
-Chewse, a food decider app
+# Chewse, a food decider app
 
 <h2>Inspiration</h2>
 
