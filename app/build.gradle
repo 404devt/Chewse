@@ -6,8 +6,8 @@ android {
         applicationId "com.a404devt.foodvote"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 5
-        versionName "1.41"
+        versionCode 6
+        versionName "1.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
