@@ -1,6 +1,6 @@
 # Chewse, A Food Decider Application
 <img src="https://i.imgur.com/x9ThHwg.jpg" width="450">
-[2nd Place Hackathon Project](https://devpost.com/software/chewse)
+<p><a href="https://devpost.com/software/chewse">2nd Place Hackathon Project</a></p>
 <h2>Inspiration</h2>
 
 <p>A group of indecisive friends want to go out for dinner, but they cannot all decide on one place to go to.</p>
