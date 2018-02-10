@@ -42,7 +42,7 @@ public class Main
             for (String key : s.getRooms().keySet())
             {
                 Room room = s.getRooms().get(key);
-                if(!room.isHasPrintedNominations() && System.currentTimeMillis() - room.getStartTime() > 15000)
+                if(!room.isHasPrintedNominations() && System.currentTimeMillis() - room.getStartTime() > 45000)
                 {
 
                     if (room.checkSuggestion())
@@ -53,7 +53,7 @@ public class Main
                     }
                 }
 
-                if(room.isHasPrintedNominations() && !room.isHasPrintedFinal() && System.currentTimeMillis() - room.getStartTime() > 15000)
+                if(room.isHasPrintedNominations() && !room.isHasPrintedFinal() && System.currentTimeMillis() - room.getStartTime() > 45000)
                 {
                     room.printVoteResult();
                 }
