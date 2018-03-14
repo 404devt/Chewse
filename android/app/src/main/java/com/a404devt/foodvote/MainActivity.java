@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity
             madeWriter = true;
             Button button = findViewById(R.id.button2);
             button.setOnClickListener(this);
-//            Log.d("ASS MAMA", "ASS MAMA");
             try {
                 socket = new Socket("159.65.72.181", 20000);
                 writer = new PrintWriter(socket.getOutputStream());
